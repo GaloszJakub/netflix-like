@@ -1,4 +1,4 @@
-import ComboBox from './Library'
+import  { ComboBox } from './Library'
 
 export default function () {
 	return (
