@@ -86,13 +86,15 @@ const cardsData = [
 export default function Features() {
 	return (
 		<div className="bg-black md:px-20 lg:px-36">
-			<div className="text-white px-6 pt-14 ">
-				<h2 className="text-2xl">Więcej powodów by dołączyć</h2>
-			</div>
-			<div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 p-6  gap-4  ">
-				{cardsData.map((card, index) => (
-					<GradientCard key={index} title={card.title} content={card.content} icon={card.icon} />
-				))}
+			<div className="container mx-auto">
+				<div className="text-white px-6 pt-14 ">
+					<h2 className="text-2xl">Więcej powodów by dołączyć</h2>
+				</div>
+				<div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 p-6  gap-4  ">
+					{cardsData.map((card, index) => (
+						<GradientCard key={index} title={card.title} content={card.content} icon={card.icon} />
+					))}
+				</div>
 			</div>
 		</div>
 	)

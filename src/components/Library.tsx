@@ -21,7 +21,7 @@ export const ComboBox: React.FC<ComboBoxProps> = ({ options }) => {
 				onClick={() => setIsOpen(!isOpen)}
 				placeholder="Język"
 				readOnly
-				className="min-w-[50%] w-[80%] pl-4 py-2 bg-black/75 border hidden sm:block border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-600 cursor-pointer"
+				className="min-w-[50%] w-[100%] pl-4 py-2 bg-black/75 border hidden sm:block border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-600 cursor-pointer"
 			/>
 			<input
 				type="text"
