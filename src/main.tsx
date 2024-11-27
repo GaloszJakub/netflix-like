@@ -5,11 +5,13 @@ import './index.css'
 import WelcomePage from './components/WelcomePage.tsx'
 import Features from './components/Features.tsx'
 import CarouselSection from './components/Carousel.tsx'
+import QuestionsSections from './components/QuestionsSection.tsx'
 
 createRoot(document.getElementById('root')!).render(
 	<StrictMode>
 		<WelcomePage />
 		<CarouselSection />
 		<Features />
+		<QuestionsSections />
 	</StrictMode>
 )
