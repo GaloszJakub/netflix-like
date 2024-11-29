@@ -16,8 +16,8 @@ const backgrounds = [
 
 export default function CarouselSection() {
 	return (
-		<div className="bg-black px-6 md:px-20 lg:px-36 text-white flex flex-row ">
-			<div className="container mx-auto">
+		<div className="bg-black px-6 md:px-20 lg:px-36 xl:px-44 2xl:px-56   text-white flex flex-row ">
+			<div className="container mx-auto max-w-[1300px]">
 				<div className="px-6 pt-14">
 					<h2 className="text-2xl font-bold">Popularne teraz</h2>
 				</div>
@@ -38,7 +38,7 @@ export default function CarouselSection() {
 						{backgrounds.map((bg, index) => (
 							<div
 								key={index}
-								className="bg-cover bg-no-repeat bg-center rounded-xl hover:scale-110 mx-12 w-32 h-48 md:w-48 md:h-64 my-4 "
+								className="bg-cover bg-no-repeat bg-center rounded-xl hover:scale-110  w-32 h-48 md:w-48 md:h-64 my-4 "
 								style={{ backgroundImage: `url(${bg.background})` }}></div>
 						))}
 					</Carousel>

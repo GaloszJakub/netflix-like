@@ -85,8 +85,9 @@ const cardsData = [
 
 export default function Features() {
 	return (
-		<div className="bg-black md:px-20 lg:px-36">
-			<div className="container mx-auto">
+		<div className="bg-black md:px-20 lg:px-36 xl:px-44 2xl:px-56">
+			<div className="container mx-auto max-w-[1300px]">
+				
 				<div className="text-white px-6 pt-14 ">
 					<h2 className="text-2xl">Więcej powodów by dołączyć</h2>
 				</div>

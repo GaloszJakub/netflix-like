@@ -14,9 +14,9 @@ export default function () {
 						</div>
 
 						<div className="flex flex-row-reverse items-center justify-end md:px-16 pr-4">
-							<div className="bg-[#E50914] px-3 rounded-md py-2 font-bold text-sm text-nowrap">
-								<a href="">Zaloguj się</a>
-							</div>
+							<a href="#" className="bg-[#E50914] px-3 rounded-md py-2 font-bold text-sm text-nowrap text-white">
+								Zaloguj się
+							</a>
 
 							<div className="ml-4 scale-75">
 								<ComboBox options={['Polski', 'English']} />
@@ -40,9 +40,11 @@ export default function () {
 									className="peer w-full px-4  py-2 text-gray-100 bg-black/70 border basis-3/4 border-gray-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-white transition"
 								/>
 
-								<div className="bg-[#E50914]  w-[100%] rounded-md font-bold text-sm basis-1/4 text-center my-auto py-2 ">
-									<a href="">Rozpocznij</a>
-								</div>
+								<a
+									href="#"
+									className="bg-[#E50914] w-full rounded-md font-bold text-sm basis-1/4 text-center my-auto py-2 text-white block">
+									Rozpocznij
+								</a>
 							</div>
 						</div>
 					</div>

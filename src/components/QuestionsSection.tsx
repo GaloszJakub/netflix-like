@@ -42,8 +42,8 @@ export default function QuestionsSections() {
 	]
 
 	return (
-		<div className="bg-black text-white px-6  md:px-20 lg:px-36  pb-6 mx-auto">
-			<div className="container mx-auto">
+		<div className="bg-black text-white px-6  md:px-20 lg:px-36 xl:px-44 2xl:px-56 pb-6 mx-auto">
+			<div className="container mx-auto max-w-[1300px]">
 				<div className="px-2 md:px-6">
 					<h2 className=" pt-14 text-2xl font-bold mb-4">Często zadawane pytania</h2>
 				</div>

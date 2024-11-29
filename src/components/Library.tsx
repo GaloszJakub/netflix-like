@@ -1,49 +1,24 @@
 import React, { useState, ReactNode } from 'react'
+import { useLanguage } from './LanguageContext'
 
 interface ComboBoxProps {
 	options: string[]
 }
 
 export const ComboBox: React.FC<ComboBoxProps> = ({ options }) => {
-	const [isOpen, setIsOpen] = useState(false)
-	const [selectedOption, setSelectedOption] = useState<string>('')
-
-	const handleOptionClick = (option: string) => {
-		setSelectedOption(option)
-		setIsOpen(false)
-	}
+	const { language, setLanguage } = useLanguage()
 
 	return (
-		<div className="relative mx-auto">
-			<input
-				type="text"
-				value={selectedOption}
-				onClick={() => setIsOpen(!isOpen)}
-				placeholder="Język"
-				readOnly
-				className="min-w-[50%] w-[100%] pl-4 py-2 bg-black/75 border hidden sm:block border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-600 cursor-pointer"
-			/>
-			<input
-				type="text"
-				value={selectedOption}
-				onClick={() => setIsOpen(!isOpen)}
-				placeholder="A"
-				readOnly
-				className="min-w-[50%] w-[80%] pl-4 py-2 bg-black/75 border sm:hidden block border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-600 cursor-pointer"
-			/>
-			{isOpen && (
-				<ul className="absolute min-w-[50%] w-[80%] lg:w-full mt-1 bg-white border text-black border-gray-200 rounded-md shadow-md z-10 max-h-40 overflow-auto">
-					{options.map((option, index) => (
-						<li
-							key={index}
-							onClick={() => handleOptionClick(option)}
-							className="px-4 py-2 hover:bg-gray-400 cursor-pointer">
-							{option}
-						</li>
-					))}
-				</ul>
-			)}
-		</div>
+		<select
+			value={language}
+			onChange={e => setLanguage(e.target.value as 'Polski' | 'English')}
+			className="bg-white border rounded-md px-2 py-1">
+			{options.map(option => (
+				<option key={option} value={option}>
+					{option}
+				</option>
+			))}
+		</select>
 	)
 }
 
