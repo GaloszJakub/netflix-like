@@ -42,9 +42,7 @@ export default function Footer() {
 						</a>
 					))}
 				</div>
-				<div className="scale-75 max-w-52 pt-10 mr-auto">
-					<ComboBox options={['Polski', 'English']} />
-				</div>
+
 				<div className="py-8">
 					<p>Podróba Netflixa</p>
 				</div>
