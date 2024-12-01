@@ -1,4 +1,5 @@
 import React, { useState, ReactNode } from 'react'
+import Cookies from 'js-cookie'
 
 interface ComboBoxProps {
 	options: string[]
@@ -6,11 +7,13 @@ interface ComboBoxProps {
 
 export const ComboBox: React.FC<ComboBoxProps> = ({ options }) => {
 	const [isOpen, setIsOpen] = useState(false)
-	const [selectedOption, setSelectedOption] = useState<string>('')
+	const [selectedOption, setSelectedOption] = useState<string>(Cookies.get('language') || 'Polski')
 
 	const handleOptionClick = (option: string) => {
+		Cookies.set('language', option, { expires: 7, path: '/' })
 		setSelectedOption(option)
 		setIsOpen(false)
+		window.location.reload()
 	}
 
 	return (
@@ -19,20 +22,12 @@ export const ComboBox: React.FC<ComboBoxProps> = ({ options }) => {
 				type="text"
 				value={selectedOption}
 				onClick={() => setIsOpen(!isOpen)}
-				placeholder="Język"
+				placeholder="Wybierz język"
 				readOnly
 				className="min-w-[50%] w-[100%] pl-4 py-2 bg-black/75 border hidden sm:block border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-600 cursor-pointer"
 			/>
-			<input
-				type="text"
-				value={selectedOption}
-				onClick={() => setIsOpen(!isOpen)}
-				placeholder="A"
-				readOnly
-				className="min-w-[50%] w-[80%] pl-4 py-2 bg-black/75 border sm:hidden block border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-600 cursor-pointer"
-			/>
 			{isOpen && (
-				<ul className="absolute min-w-[50%] w-[80%] lg:w-full mt-1 bg-white border text-black border-gray-200 rounded-md shadow-md z-10 max-h-40 overflow-auto">
+				<ul className="absolute min-w-[50%] w-full mt-1 bg-white border text-black border-gray-200 rounded-md shadow-md z-10 max-h-40 overflow-auto">
 					{options.map((option, index) => (
 						<li
 							key={index}

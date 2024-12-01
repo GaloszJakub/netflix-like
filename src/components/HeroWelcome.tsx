@@ -1,6 +1,25 @@
 import { ComboBox } from './Library'
+import Cookies from 'js-cookie'
 
 export default function () {
+	const translations = {
+		Polski: {
+			title: 'Filmy, seriale i wiele więcej bez ograniczeń',
+			paragraph: 'Już od 33 zł. Anuluj w każdej chwili.',
+			paragraph2: 'Zaczynamy oglądać? Wprowadź adres e‑mail, aby utworzyć lub odnowić konto.',
+			link: 'Rozpocznij',
+		},
+
+		English: {
+			title: 'Unlimited movies, TV shows, and more',
+			paragraph: 'Starts at 33 zł. Cancel anytime.',
+			paragraph2: 'Ready to watch? Enter your email to create or restart your membership.',
+			link: 'Get Started',
+		},
+	}
+	type Language = keyof typeof translations
+	const language: Language = (Cookies.get('language') as Language) || 'Polski'
+	const texts = translations[language]
 	return (
 		<div>
 			<div className="bg-[url('public/hero_netflix.jpg')] w-full bg-cover bg-no-repeat bg-center text-white relative z-0 pb-40 4xl:text-4xl">
@@ -15,7 +34,7 @@ export default function () {
 
 						<div className="flex flex-row-reverse items-center justify-end md:px-16 pr-4">
 							<a href="#" className="bg-[#E50914] px-3 rounded-md py-2 font-bold text-sm text-nowrap text-white">
-								Zaloguj się
+								{language === 'Polski' ? 'Zaloguj się' : 'Sign in'}
 							</a>
 
 							<div className="ml-4 scale-75">
@@ -25,13 +44,11 @@ export default function () {
 					</div>
 					<div className="flex flex-col mx-auto px-8 md:max-w-[45%] text-center">
 						<div className="text-center mb-6 ">
-							<h2 className="font-bold text-6xl pb-8">Filmy, seriale i wiele więcej bez ograniczeń</h2>
-							<p>Już od 33 zł. Anuluj w każdej chwili.</p>
+							<h2 className="font-bold text-6xl pb-8">{texts.title}</h2>
+							<p>{texts.paragraph}</p>
 						</div>
 						<div>
-							<p className="max-w-[75%] mx-auto mb-4">
-								Zaczynamy oglądać? Wprowadź adres e‑mail, aby utworzyć lub odnowić konto.
-							</p>
+							<p className="max-w-[75%] mx-auto mb-4">{texts.paragraph2}</p>
 							<div className="flex flex-col md:flex-row mx-auto max-h-32 max-w-[80%] gap-2">
 								<input
 									type="text"
@@ -43,7 +60,7 @@ export default function () {
 								<a
 									href="#"
 									className="bg-[#E50914] w-full rounded-md font-bold text-sm basis-1/4 text-center my-auto py-2 text-white block">
-									Rozpocznij
+									{texts.link}
 								</a>
 							</div>
 						</div>

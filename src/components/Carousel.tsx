@@ -1,5 +1,6 @@
 import Carousel from 'react-multi-carousel'
 import 'react-multi-carousel/lib/styles.css'
+import Cookies from 'js-cookie'
 
 const backgrounds = [
 	{ background: '/netflix1.jpg' },
@@ -15,11 +16,12 @@ const backgrounds = [
 ]
 
 export default function CarouselSection() {
+	const language = Cookies.get('language') || 'Polski'
 	return (
 		<div className="bg-black px-6 md:px-20 lg:px-36 xl:px-44 2xl:px-56   text-white flex flex-row ">
 			<div className="container mx-auto max-w-[1300px]">
 				<div className="px-6 pt-14">
-					<h2 className="text-2xl font-bold">Popularne teraz</h2>
+					<h2 className="text-2xl font-bold">{language === 'Polski' ? 'Popularne teraz' : 'Popular now'}</h2>
 				</div>
 				<div className="pt-8">
 					<Carousel
