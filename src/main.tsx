@@ -1,19 +1,18 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
-import WelcomePage from './components/WelcomePage.tsx'
-import Features from './components/Features.tsx'
-import CarouselSection from './components/Carousel.tsx'
-import QuestionsSections from './components/QuestionsSection.tsx'
-import Footer from './components/Footer.tsx'
+import HomePage from './pages/HomePage.tsx'
+import LoginPage from './pages/LoginPage.tsx'
 
 createRoot(document.getElementById('root')!).render(
 	<StrictMode>
-		<WelcomePage />
-		<CarouselSection />
-		<Features />
-		<QuestionsSections />
-		<Footer />
+		<Router>
+			<Routes>
+				<Route path="/" element={<HomePage />} />
+				<Route path="/login" element={<LoginPage />} />
+			</Routes>
+		</Router>
 	</StrictMode>
 )
