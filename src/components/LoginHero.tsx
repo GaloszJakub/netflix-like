@@ -26,7 +26,7 @@ export default function HeroLogin() {
 						className="peer w-full px-4  py-2 text-gray-100 bg-black/70 border basis-3/4 border-gray-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-white transition"
 					/>
 					<a
-						href="#"
+						href="browse"
 						className="bg-[#E50914] w-full rounded-md font-bold text-sm basis-1/4 text-center my-auto py-2 text-white block hover:bg-[#af272e] duration-300">
 						Zaloguj sie
 					</a>

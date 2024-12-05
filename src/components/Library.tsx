@@ -57,3 +57,20 @@ export const GradientCard: React.FC<CardProps> = ({ title, content, icon }) => {
 		</div>
 	)
 }
+
+interface ProfileCardProps {
+	background: string
+	name: string
+	onClick: () => void
+}
+
+export const ProfileCard: React.FC<ProfileCardProps> = ({ background, name, onClick }) => {
+	return (
+		<div className="group cursor-pointer" onClick={onClick}>
+			<div
+				style={{ backgroundImage: `url(${background})` }}
+				className="w-36 h-36 bg-cover bg-center group-hover:ring-white group-hover:ring-2"></div>
+			<div className="text-center text-[#808080] group-hover:text-white mt-2">{name}</div>
+		</div>
+	)
+}
