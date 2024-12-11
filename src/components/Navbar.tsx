@@ -44,7 +44,7 @@ export default function Navbar() {
 					</div>
 				</div>
 			</div>
-			<div className="bg-[url(/jinx.jpg)] h-screen w-screen absolute inset-0 -z-10  bg-center bg-no-repeat bg-cover"></div>
+			
 		</div>
 	)
 }

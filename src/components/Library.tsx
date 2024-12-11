@@ -1,4 +1,4 @@
-import React, { useState, ReactNode } from 'react'
+import React, { useRef, useEffect, ReactNode, useState } from 'react'
 import Cookies from 'js-cookie'
 
 interface ComboBoxProps {
@@ -17,7 +17,7 @@ export const ComboBox: React.FC<ComboBoxProps> = ({ options }) => {
 	}
 
 	return (
-		<div className="relative mx-auto">
+		<div className="relative mx-auto ">
 			<input
 				type="text"
 				value={selectedOption}
@@ -73,6 +73,82 @@ export const ProfileCard: React.FC<ProfileCardProps> = ({ background, name, onCl
 					className="w-36 h-36 bg-cover bg-center group-hover:ring-white group-hover:ring-2"></div>
 				<div className="text-center text-[#808080] group-hover:text-white mt-2">{name}</div>
 			</a>
+		</div>
+	)
+}
+interface CarouselProps {
+	items: React.ReactNode[] // Lista elementów do wyświetlenia w karuzeli
+	itemsPerGroup?: number // Liczba elementów w jednej grupie
+	autoScroll?: boolean // Czy karuzela ma automatycznie przewijać
+	interval?: number // Interwał automatycznego przewijania (w ms)
+}
+
+export const Carousel: React.FC<CarouselProps> = ({
+	items,
+	itemsPerGroup = 6,
+	autoScroll = false,
+	interval = 3000,
+}) => {
+	const [currentIndex, setCurrentIndex] = useState(0)
+	const totalGroups = Math.ceil(items.length / itemsPerGroup)
+
+	// Grupowanie elementów
+	const groupedItems = []
+	for (let i = 0; i < items.length; i += itemsPerGroup) {
+		groupedItems.push(items.slice(i, i + itemsPerGroup))
+	}
+
+	// Obsługa przewijania do przodu
+	const nextSlide = () => {
+		setCurrentIndex(prevIndex => (prevIndex + 1) % totalGroups)
+	}
+
+	// Obsługa przewijania wstecz
+	const prevSlide = () => {
+		setCurrentIndex(prevIndex => (prevIndex === 0 ? totalGroups - 1 : prevIndex - 1))
+	}
+
+	// Automatyczne przewijanie
+	useEffect(() => {
+		if (!autoScroll) return
+
+		const timer = setInterval(() => {
+			nextSlide()
+		}, interval)
+
+		return () => clearInterval(timer) // Czyścimy timer przy unmount
+	}, [autoScroll, interval])
+
+	return (
+		<div className="relative w-screen n">
+			<div
+				className="flex flex-nowrap transition-transform duration-300 group ease-in-out"
+				style={{
+					transform: `translateX(-${currentIndex * 100}%)`,
+				}}>
+				{groupedItems.map((group, groupIndex) => (
+					<div key={groupIndex} className="flex w-screen shrink-0 flex-nowrap ">
+						{group.map((item, index) => (
+							<div
+								key={index}
+								className={`w-[15%] mx-1 flex-shrink-0 `}>
+								{item}
+							</div>
+						))}
+					</div>
+				))}
+			</div>
+
+			<button
+				onClick={prevSlide}
+				className="absolute  -left-8 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full">
+				◀
+			</button>
+			<button
+				onClick={nextSlide}
+				className="absolute right-24 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full">
+				▶
+			</button>
 		</div>
 	)
 }
