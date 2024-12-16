@@ -1,7 +1,7 @@
 import { CiSearch } from 'react-icons/ci'
 import { CiBellOn } from 'react-icons/ci'
 import { IoIosArrowDown } from 'react-icons/io'
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 export default function Navbar() {
 	const [isScrolled, setIsScrolled] = useState(false)
 	useEffect(() => {
@@ -44,7 +44,6 @@ export default function Navbar() {
 					</div>
 				</div>
 			</div>
-			
 		</div>
 	)
 }

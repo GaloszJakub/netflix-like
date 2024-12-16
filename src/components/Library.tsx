@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, ReactNode, useState } from 'react'
+import React, { useEffect, ReactNode, useState } from 'react'
 import Cookies from 'js-cookie'
 
 interface ComboBoxProps {
